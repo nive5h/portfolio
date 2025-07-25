@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nivesh N S | Web Developer</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+<body>
+  <!-- Dark mode toggle -->
+  <button id="themeToggle" class="toggle-btn" aria-label="Toggle dark mode">🌙</button>
+
+  <header>
+    <nav>
+      <h1 class="logo">Nivesh N S</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1400">
+      <img src="ppic.jpeg" alt="Profile Picture" id="ppic">
+      <div>
+        <h2>Hello, I'm <span class="highlight">Nivesh</span> 👋</h2>
+        <p>Web Developer & Computer Science Student</p>
+        <a href="#contact" class="btn-primary">Hire Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>
+      I am a B.Sc. Computer Science student at Thiagarajar College, Madurai.
+      I love building websites, learning new technologies, and growing step by step
+      toward becoming a full-stack developer. I'm currently exploring freelancing opportunities
+      and investing for the future.
+    </p>
+  </section>
+
+  <!-- Skills Section (Simple cards) -->
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">HTML5</div>
+      <div class="skill-card">CSS3</div>
+      <div class="skill-card">JavaScript</div>
+      <div class="skill-card">Java</div>
+      <div class="skill-card">Responsive Design</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <ul>
+      <li>✅ Simple Calculator (HTML/CSS/JS)</li>
+      <li>✅ To-Do List App</li>
+      <li>📌 Portfolio Website (this site!)</li>
+      <li>📌 Upcoming: Responsive Navbar, Login Page UI, Weather App</li>
+    </ul>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" data-aos="fade-up">
+    <h2>Certifications</h2>
+    <ul>
+      <li>NPTEL - Java Programming</li>
+      <li>Future: Responsive Web Design (freeCodeCamp)</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <p>Email: nivesh.ns@email.com</p>
+    <p>WhatsApp: +91XXXXXXXXXX</p>
+    <p>
+      Fiverr:
+      <a href="https://www.fiverr.com/niveshns" target="_blank" rel="noopener noreferrer">fiverr.com/niveshns</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Nivesh N S. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Init AOS with a slightly slower default too
+    AOS.init({ duration: 900 });
+
+    // Scroll to top on refresh
+    window.onload = () => { window.scrollTo(0, 0); };
+
+    // Dark mode toggle + icon swap
+    const toggleBtn = document.getElementById('themeToggle');
+    const setIcon = () => {
+      toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    };
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      setIcon();
+    });
+    // Ensure correct icon on load
+    setIcon();
+  </script>
+</body>
+</html>
