@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Page Setup -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nivesh | Portfolio</title>
+  <meta name="description" content="Nivesh — B.Sc CS student & Web Developer. Portfolio, projects, skills, and contact." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Inline CSS for Profile Image -->
+  <style>
+    .profile-pic {
+      width: 150px;      /* Smaller size */
+      height: 150px;     /* Keep square for perfect circle */
+      border-radius: 50%; /* Make it fully round */
+      object-fit: cover; /* Prevent stretching */
+      border: 3px solid #ddd; /* Optional border */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Soft shadow */
+    }
+    /* ====== Base ====== */
+:root{
+  --bg: #0b0f17;
+  --surface: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #4f46e5;
+  --accent-2: #22d3ee;
+  --card: #0f172a;
+  --ring: rgba(79,70,229,.35);
+}
+
+:root.light{
+  --bg: #ffffff;
+  --surface: #f6f7fb;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #4338ca;
+  --accent-2: #0891b2;
+  --card: #ffffff;
+  --ring: rgba(67,56,202,.25);
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img{ display: block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+
+.container{ width: min(1100px, 92%); margin-inline: auto; }
+
+/* Skip link */
+.skip-link{
+  position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{ position:static; width:auto; height:auto; padding:.5rem 1rem; background:var(--accent); color:white; border-radius:.5rem; }
+
+/* ====== Header / Nav ====== */
+.header{
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg) 70%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--muted) 20%, transparent);
+}
+.nav{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .75rem 0;
+}
+.logo{ font-weight: 800; font-size: 1.25rem; letter-spacing: .5px; }
+.logo span{ color: var(--accent); }
+
+.nav-menu{
+  display: flex; gap: 1rem; align-items: center; list-style: none; margin: 0; padding: 0;
+}
+.nav-menu a{ padding:.5rem .75rem; border-radius: .75rem; }
+.nav-menu a:hover, .nav-menu a:focus{ outline: none; background: color-mix(in oklab, var(--accent) 15%, transparent); }
+.nav-toggle{ display:none; background:transparent; border:none; cursor:pointer; padding:.5rem; border-radius:.75rem; }
+.nav-toggle:focus{ outline:2px solid var(--ring); outline-offset:2px; }
+.nav-toggle .bar{ display:block; width:22px; height:2px; background:var(--text); margin:4px 0; border-radius:2px; }
+
+/* ====== Hero ====== */
+.hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: center;
+  padding: 3rem 0 2rem;
+}
+.hero-content h1{ font-size: clamp(2rem, 5vw, 3.2rem); line-height:1.15; margin:.25rem 0 .75rem; }
+.eyebrow{ letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-size:.9rem; }
+.accent{ background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.lead{ font-size: 1.05rem; color: var(--muted); max-width: 60ch; }
+.cta{ display:flex; gap:.75rem; margin:1.25rem 0 1rem; flex-wrap: wrap; }
+.quick-facts{ display:flex; gap:1rem; flex-wrap:wrap; color:var(--muted); padding-left:1rem; }
+.quick-facts li{ list-style: disc; }
+
+.hero-photo img{ 
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  border:1px solid color-mix(in oklab, var(--muted) 15%, transparent); 
+  margin: 0 auto;
+}
+
+/* ====== Sections ====== */
+.section{ padding: 3rem 0; }
+.section h2{ font-size: 2rem; margin: 0 0 1rem; }
+.about-cards, .grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; }
+.card{
+  background: var(--card);
+  border: 1px solid color-mix(in oklab, var(--muted) 18%, transparent);
+  border-radius: 1rem;
+  padding: 1.1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+.card h3{ margin-top:0; }
+
+.skills{ display:grid; grid-template-columns: repeat(2,1fr); gap: .75rem 1.5rem; }
+.skill{ display:flex; flex-direction:column; gap:.4rem; }
+.meter{
+  height: 10px; background: color-mix(in oklab, var(--muted) 18%, transparent); border-radius:999px;
+  overflow:hidden; position:relative;
+}
+.meter::after{
+  content:""; position:absolute; inset:0; width:var(--val, 50%);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* Projects */
+.project{ position:relative; }
+.project-tag{
+  position:absolute; top:.9rem; right:.9rem; font-size:.75rem; padding:.2rem .5rem;
+  background: color-mix(in oklab, var(--accent) 30%, transparent); border-radius:.5rem;
+}
+.project-actions{ display:flex; gap:.5rem; margin-top:.75rem; }
+
+/* Buttons */
+.btn{
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white; border: none; padding:.65rem 1rem; border-radius:.75rem; font-weight:600; cursor:pointer;
+  box-shadow: 0 10px 20px rgba(79,70,229,.25);
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn:focus{ outline:2px solid var(--ring); outline-offset:2px; }
+.btn-ghost{ background: transparent; border: 1px solid color-mix(in oklab, var(--muted) 25%, transparent); color: var(--text); }
+.btn-small{ padding:.45rem .75rem; font-size:.9rem; }
+
+/* Forms */
+.contact-form{ display:grid; gap:.75rem; max-width: 560px; }
+.field{ display:flex; flex-direction:column; gap:.35rem; }
+input, textarea{
+  background: var(--surface); color: var(--text);
+  border:1px solid color-mix(in oklab, var(--muted) 25%, transparent);
+  border-radius:.6rem; padding:.65rem .8rem; font: inherit;
+}
+input:focus, textarea:focus{ outline:2px solid var(--ring); outline-offset:2px; }
+.note{ color: var(--muted); font-size:.9rem; }
+
+/* Footer */
+.footer{ margin-top: 2rem; padding: 1.25rem 0; border-top: 1px solid color-mix(in oklab, var(--muted) 20%, transparent); }
+.footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.footer .social{ display:flex; list-style:none; gap:1rem; margin:0; padding:0; }
+.footer .social a{ color: var(--muted); }
+.footer .social a:hover{ color: var(--text); }
+
+/* ====== Responsive ====== */
+@media (max-width: 900px){
+  .hero{ grid-template-columns: 1fr; }
+  .hero-photo{ order: -1; }
+  .about-cards, .grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .nav-toggle{ display:block; }
+  .nav-menu{
+    position:absolute; top:60px; right:4%; background:var(--card); border:1px solid color-mix(in oklab, var(--muted) 18%, transparent);
+    padding:.5rem; border-radius:.75rem; flex-direction:column; gap:.25rem; display:none; width: min(260px, 92vw);
+  }
+  .nav-menu.show{ display:flex; }
+  .about-cards, .grid, .skills{ grid-template-columns: 1fr; }
+}
+
+  </style>
+
+  <!-- Favicon (Emoji Icon) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧑‍💻</text></svg>">
+</head>
+<body>
+  <!-- Accessibility: Skip to main content -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Navigation Bar -->
+  <header class="header" id="top">
+    <nav class="nav container" aria-label="Main Navigation">
+      <a class="logo" href="#top">Nivesh<span>.</span></a>
+      
+      <!-- Mobile Menu Button -->
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <ul id="navMenu" class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="themeToggle" class="btn btn-ghost" aria-label="Toggle theme">🌓</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main">
+
+    <!-- Hero Section -->
+    <section class="hero container">
+      <div class="hero-content">
+        <p class="eyebrow">B.Sc CS @ Thiagarajar College</p>
+        <h1>Hi, I'm <span class="accent">Nivesh</span><br>Web Developer</h1>
+        <p class="lead">
+          I build clean, responsive websites with HTML, CSS, and JavaScript.
+          I'm learning Data Structures, RDBMS, and modern Web Dev to craft user-friendly experiences.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="btn btn-ghost" href="#contact">Contact Me</a>
+        </div>
+        <ul class="quick-facts">
+          <li>Languages: Java, C, C++, Python</li>
+          <li>Web: HTML5, CSS3, JavaScript</li>
+          <li>Certificates: Java (NPTEL), PHP & MySQL, Bash, MongoDB Basics</li>
+        </ul>
+      </div>
+      <div class="hero-photo">
+        <img src="profile.jpg" alt="Portrait of Nivesh" class="profile-pic" loading="eager">
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section container">
+      <h2>About</h2>
+      <p>
+        I'm a second-year Computer Science student from Madurai, passionate about web development and problem solving.
+        I enjoy converting ideas into real, usable products. I value clean code, clarity, and consistent improvement.
+      </p>
+      <div class="about-cards">
+        <article class="card">
+          <h3>Current Focus</h3>
+          <ul>
+            <li>Mastering fundamentals: HTML, CSS, JS</li>
+            <li>Strengthening DS & Algorithms</li>
+            <li>Solid understanding of RDBMS & SQL</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Achievements</h3>
+          <ul>
+            <li>Built To-Do App & Calculator</li>
+            <li>NPTEL Java Certificate</li>
+            <li>IITB Spoken Tutorial: PHP & MySQL, Bash</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section container">
+      <h2>Skills</h2>
+      <h3>“கற்றது கைமண் அளவு, கல்லாதது உலகளவு”</h3>
+      <div class="skills">
+        <div class="skill"><span>HTML5</span><div class="meter" data-value="85"></div></div>
+        <div class="skill"><span>CSS3</span><div class="meter" data-value="80"></div></div>
+        <div class="skill"><span>JavaScript</span><div class="meter" data-value="70"></div></div>
+        <div class="skill"><span>Java</span><div class="meter" data-value="75"></div></div>
+        <div class="skill"><span>C / C++</span><div class="meter" data-value="65"></div></div>
+        <div class="skill"><span>SQL / RDBMS</span><div class="meter" data-value="70"></div></div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section container">
+      <h2>Projects</h2>
+      <div class="grid">
+        <article class="card project">
+          <div class="project-tag">Web App</div>
+          <h3>To-Do List</h3>
+          <p>Task manager with add/edit/delete and localStorage persistence.</p>
+          <div class="project-actions">
+            <a class="btn btn-small" href="https://nive5h.github.io/To-Do-list/" aria-disabled="true">Live Project</a>
+            <a class="btn btn-ghost btn-small" href="https://github.com/nive5h/To-Do-list/blob/main/index.html" aria-disabled="true">Code</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <div class="project-tag">Web</div>
+          <h3>Simple Calculator</h3>
+          <p>Responsive calculator using HTML, CSS, and vanilla JS.</p>
+          <div class="project-actions">
+            <a class="btn btn-small" href="https://nive5h.github.io/Simple-Calculator/" aria-disabled="true">Live Project</a>
+            <a class="btn btn-ghost btn-small" href="https://github.com/nive5h/Simple-Calculator/blob/main/index.html" aria-disabled="true">Code</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <div class="project-tag">Practice</div>
+          <h3>DSA Playground</h3>
+          <p>Interactive page to visualize stacks, queues, and linked lists.</p>
+          <div class="project-actions">
+            <a class="btn btn-small" href="#" aria-disabled="true">Live (soon)</a>
+            <a class="btn btn-ghost btn-small" href="#" aria-disabled="true">Code (soon)</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section container">
+      <h2>Services</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Responsive Web Pages</h3>
+          <p>Pixel-clean, mobile-friendly pages built with semantic HTML, CSS, and JS.</p>
+        </article>
+        <article class="card">
+          <h3>Landing Pages</h3>
+          <p>Fast and SEO-friendly landing pages to showcase your product or service.</p>
+        </article>
+        <article class="card">
+          <h3>Fixes & Improvements</h3>
+          <p>Debugging, code cleanup, accessibility and performance improvements.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <p>Want to collaborate or hire me? Send a message:</p>
+      <form class="contact-form" name="contact">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="How can I help?" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send</button>
+        <p class="note"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Nivesh • Built with HTML, CSS, and JS</p>
+      <ul class="social">
+        <li><a href="#" aria-label="GitHub">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/nivesh-n-s-98253b365?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn">LinkedIn</a></li>
+        <li><a href="https://mail.google.com/mail/u/1/?tab=rm&ogbl&pli=1#inbox" aria-label="Email">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // ===== Utilities: helper to select elements =====
+const $ = (sel, scope=document) => scope.querySelector(sel);
+const $$ = (sel, scope=document) => [...scope.querySelectorAll(sel)];
+
+// ===== Mobile nav toggle =====
+const navToggle = $("#navToggle");
+const navMenu = $("#navMenu");
+navToggle.addEventListener("click", () => {
+  const expanded = navToggle.getAttribute("aria-expanded") === "true";
+  navToggle.setAttribute("aria-expanded", String(!expanded));
+  navMenu.classList.toggle("show");
+});
+
+// Close menu when clicking a link (mobile)
+$$(".nav-menu a").forEach(a => a.addEventListener("click", () => {
+  navMenu.classList.remove("show");
+  navToggle.setAttribute("aria-expanded", "false");
+}));
+
+// ===== Smooth scroll =====
+$$('a[href^="#"]').forEach(a => {
+  a.addEventListener("click", e => {
+    const id = a.getAttribute("href");
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.pushState(null, "", id);
+    }
+  });
+});
+
+// ===== Theme toggle (Light/Dark) =====
+const root = document.documentElement;
+const themeToggle = $("#themeToggle");
+
+const applyTheme = (mode) => {
+  if (mode === "light") root.classList.add("light");
+  else root.classList.remove("light");
+  localStorage.setItem("theme", mode);
+};
+
+// initial theme from localStorage or OS preference
+const stored = localStorage.getItem("theme");
+const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+applyTheme(stored ? stored : (prefersLight ? "light" : "dark"));
+
+themeToggle.addEventListener("click", () => {
+  const next = root.classList.contains("light") ? "dark" : "light";
+  applyTheme(next);
+});
+
+// ===== Skill meters fill based on data-value =====
+$$(".meter").forEach(m => {
+  const val = m.dataset.value || 60;
+  m.style.setProperty("--val", val + "%");
+});
+
+// ===== Footer year =====
+$("#year").textContent = new Date().getFullYear();
+
+// ===== Contact form (demo) =====
+$("form[name='contact']").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Thanks! This demo form doesn't send yet. Connect it to Formspree or your backend.");
+});
+
+  </script>
+</body>
+</html>
